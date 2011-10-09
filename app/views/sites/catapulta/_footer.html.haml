@@ -1,0 +1,39 @@
+#social_menu
+  %h1= t('.social_title')
+  %ul
+    %li
+      = link_to current_site.facebook, :target => :_blank do
+        = image_tag("sites/#{current_site.path}/fb_ico.png", :title => "Facebook")
+        = t('.facebook')
+    %li
+      = link_to "http://twitter.com/#{current_site.twitter}", :target => :_blank do
+        = image_tag("sites/#{current_site.path}/tw_ico.png", :title => "Twitter")
+        = t('.twitter')
+    %li
+      = link_to current_site.blog, :target => :_blank do
+        = image_tag("sites/#{current_site.path}/bl_ico.png", :title => "Blog")
+        = t('.blog')
+    -# %li
+      -# link_to "mailto:#{current_site.email}" do
+        -# image_tag("sites/#{current_site.path}/contact.png", :title => t('.contact_title'))
+        -# t('.contact')
+        
+#footer_menu
+  %h1= t('.info_title')
+  %ul
+    -# %li= link_to t('.guidelines'), guidelines_path
+    %li= link_to t('.faq'), faq_path
+    %li= link_to t('.terms'), terms_path
+    %li= link_to t('.privacy'), privacy_path
+    
+#contact_menu
+  %h1= t('.contact_title')
+  %ul
+    %li= link_to current_site.email, "mailto:#{current_site.email}"
+    %li= link_to t('.tel_text'), "tel:#{t('.tel_number')}"
+
+-# #colophon
+  -# #powered_by
+    -# = link_to "http://catarse.me", :target => :_blank do
+      -# = image_tag("sites/#{current_site.path}/powered_by.png", :title => "powered by Catarse")
+

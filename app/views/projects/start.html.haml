@@ -1,0 +1,25 @@
+= content_for :content_header do
+  %h1= t('.title')
+  %h2= t('.subtitle')
+= render :partial => "/sites/#{current_site.path}/project_warning"
+= form_tag(send_mail_projects_path, :id => 'start_project_form') do
+  %fieldset
+    = label_tag 'about', t('.about')
+    = text_area_tag 'about'
+    %p.inline-hints= t('.about_hint')
+    = label_tag 'rewards', t('.rewards')
+    = text_area_tag 'rewards'
+    %p.inline-hints= t('.rewards_hint')
+    = label_tag 'links', t('.links')
+    = text_area_tag 'links'
+    %p.inline-hints= t('.links_hint')
+    = label_tag 'contact', t('.contact')
+    = text_field_tag 'contact', (current_user.email if current_user)
+  .submit
+    %fieldset
+      = check_box_tag 'accept'
+      = label_tag 'accept', t('accept_terms_html', :link => link_to(t('terms'), terms_path, :target => :_blank)), :class => 'inline'
+    %fieldset
+      = submit_tag t('.submit'), :disabled => true
+      = image_tag "sites/#{current_site.path}/loading.gif", :id => 'loading'
+= javascript_include_tag 'start_project'
